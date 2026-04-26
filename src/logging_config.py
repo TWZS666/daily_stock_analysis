@@ -153,3 +153,9 @@ def setup_logging(
     logging.info(f"日志系统初始化完成，日志目录: {rel_log_path}")
     logging.info(f"常规日志: {rel_log_file}")
     logging.info(f"调试日志: {rel_debug_log_file}")
+# ========== 优化：关闭刷屏的DEBUG日志 ==========
+import logging
+logging.getLogger("httpcore").setLevel(logging.WARNING)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
+logging.getLogger("litellm").setLevel(logging.WARNING)
+logging.getLogger("charset_normalizer").setLevel(logging.WARNING)
